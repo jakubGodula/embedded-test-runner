@@ -1,0 +1,21 @@
+[package]
+name = "embedded-test-runner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+esp-hal = { version = "1.2.2", features = ["esp32s3"] }
+esp-backtrace = { version = "0.17.0", features = ["esp32s3", "panic-handler", "println"] }
+esp-println = { version = "0.15.0", features = ["esp32s3", "log-04"] }
+esp-alloc = { version = "0.8.0" }
+esp-bootloader-esp-idf = { version = "0.6.0", features = ["esp32s3"] }
+heapless = "0.8"
+critical-section = "1.2"
+
+[profile.dev]
+opt-level = "s"
+
+[profile.release]
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
